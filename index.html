@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculdade SaúdeTech</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Faculdade SaúdeTech</h1>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos uma instituição focada na educação e tecnologia na área da saúde, formando profissionais preparados para o futuro.</p>
+        <button onclick="mostrarMais()">Saiba Mais</button>
+        <p id="info-extra" style="display:none;">Nossa missão é oferecer um ensino inovador e digital, garantindo excelência acadêmica para nossos alunos.</p>
+    </section>
+    
+    <section id="cursos">
+        <h2>Nossos Cursos</h2>
+        <div class="curso-container">
+            <button class="curso" onclick="mostrarInfo('medicina')">Medicina</button>
+            <button class="curso" onclick="mostrarInfo('enfermagem')">Enfermagem</button>
+            <button class="curso" onclick="mostrarInfo('farmacia')">Farmácia</button>
+            <button class="curso" onclick="mostrarInfo('fisioterapia')">Fisioterapia</button>
+            <button class="curso" onclick="mostrarInfo('nutricao')">Nutrição</button>
+        </div>
+    </section>
+    
+
+    <!-- Modal para mostrar informações dos cursos -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h3 id="titulo-curso"></h3>
+            <p id="descricao-curso"></p>
+        </div>
+    </div>
+
+    <section id="depoimentos">
+        <h2>O que nossos alunos dizem</h2>
+        <div class="depoimento">
+            <p>"A melhor experiência acadêmica que já tive! Professores qualificados e estrutura impecável." - João Silva</p>
+        </div>
+        <div class="depoimento">
+            <p>"O ensino inovador me preparou para o mercado de trabalho de maneira única!" - Maria Oliveira</p>
+        </div>
+        <button onclick="adicionarDepoimento()">Adicionar Depoimento</button>
+    </section>
+    
+    <section id="contato">
+        <h2>Contato</h2>
+        <form id="contact-form">
+            <input type="text" id="nome" placeholder="Seu Nome" required>
+            <input type="email" id="email" placeholder="Seu Email" required>
+            <textarea id="mensagem" placeholder="Sua Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+        <p id="mensagem-enviada" style="display:none; color: green;">Mensagem enviada com sucesso!</p>
+    </section>
+
+    <script>
+        // Função para mostrar mais informações sobre o curso ao clicar
+        function mostrarInfo(curso) {
+            let titulo = '';
+            let descricao = '';
+
+            // Definir o título e descrição com base no curso escolhido
+            switch(curso) {
+                case 'medicina':
+                    titulo = 'Curso de Medicina';
+                    descricao = 'O curso de Medicina prepara os alunos para atuar como médicos com habilidades clínicas e científicas, proporcionando conhecimento aprofundado nas áreas de saúde e diagnóstico.';
+                    break;
+                case 'enfermagem':
+                    titulo = 'Curso de Enfermagem';
+                    descricao = 'O curso de Enfermagem oferece uma formação completa para atuar em hospitais, clínicas e outros ambientes de saúde, com foco no cuidado integral ao paciente.';
+                    break;
+                case 'farmacia':
+                    titulo = 'Curso de Farmácia';
+                    descricao = 'O curso de Farmácia prepara profissionais para atuar na indústria farmacêutica, em farmácias e drogarias, além de desenvolver habilidades na manipulação e controle de medicamentos.';
+                    break;
+                case 'fisioterapia':
+                    titulo = 'Curso de Fisioterapia';
+                    descricao = 'O curso de Fisioterapia forma profissionais para atuar no tratamento de problemas de movimento, lesões musculoesqueléticas e reabilitação física de pacientes.';
+                    break;
+                case 'nutricao':
+                    titulo = 'Curso de Nutrição';
+                    descricao = 'O curso de Nutrição ensina aos alunos como promover a saúde e o bem-estar por meio da alimentação, atuando na prevenção e no tratamento de doenças relacionadas à nutrição.';
+                    break;
+                default:
+                    titulo = 'Curso não encontrado';
+                    descricao = 'Selecione um curso para visualizar mais informações.';
+                    break;
+            }
+
+            // Exibir o modal com as informações do curso
+            document.getElementById('titulo-curso').innerText = titulo;
+            document.getElementById('descricao-curso').innerText = descricao;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Fechar o modal quando o usuário clicar fora da área de conteúdo
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal')) {
+                fecharModal();
+            }
+        }
+    </script>
+</body>
+</html>
