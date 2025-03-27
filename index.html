@@ -1,126 +1,103 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculdade SaúdeTech</title>
+    <title>Afya Institucional</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    
+    <!-- Cabeçalho -->
     <header>
-        <h1>Faculdade SaúdeTech</h1>
-        <nav>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#cursos">Cursos</a></li>
-                <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Afya Educacional</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
-    <section id="sobre">
-        <h2>Sobre Nós</h2>
-        <p>Somos uma instituição focada na educação e tecnologia na área da saúde, formando profissionais preparados para o futuro.</p>
-        <button onclick="mostrarMais()">Saiba Mais</button>
-        <p id="info-extra" style="display:none;">Nossa missão é oferecer um ensino inovador e digital, garantindo excelência acadêmica para nossos alunos.</p>
-    </section>
-    
-    <section id="cursos">
-        <h2>Nossos Cursos</h2>
-        <div class="curso-container">
-            <button class="curso" onclick="mostrarInfo('medicina')">Medicina</button>
-            <button class="curso" onclick="mostrarInfo('enfermagem')">Enfermagem</button>
-            <button class="curso" onclick="mostrarInfo('farmacia')">Farmácia</button>
-            <button class="curso" onclick="mostrarInfo('fisioterapia')">Fisioterapia</button>
-            <button class="curso" onclick="mostrarInfo('nutricao')">Nutrição</button>
+    <!-- Seção Inicial com Banner -->
+    <section id="home" class="banner">
+        <div class="banner-content">
+            <h2>Bem-vindo à Afya</h2>
+            <p>Transformando o ensino da saúde com tecnologia e inovação.</p>
+            <a href="#cursos" class="btn">Conheça nossos cursos</a>
         </div>
     </section>
     
-
-    <!-- Modal para mostrar informações dos cursos -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h3 id="titulo-curso"></h3>
-            <p id="descricao-curso"></p>
+    <!-- Sobre Nós -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>A Afya é uma instituição focada em educação superior na área da saúde, oferecendo cursos de excelência e promovendo inovação no ensino.</p>
+        </div>
+    </section>
+    
+   <!-- Cursos -->
+<section id="cursos" class="section bg-light">
+    <div class="container">
+        <h2>Nossos Cursos</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <h3>Medicina</h3>
+                <button onclick="showCourseDetails('medicina')">Saiba Mais</button>
+                <div class="course-description" id="medicina-description">
+                    <p>A Medicina é o campo da saúde que lida com a prevenção, diagnóstico e tratamento de doenças. Este curso prepara você para atuar como médico com excelência.</p>
+                </div>
+            </div>
+            <div class="course-item">
+                <h3>Enfermagem</h3>
+                <button onclick="showCourseDetails('enfermagem')">Saiba Mais</button>
+                <div class="course-description" id="enfermagem-description">
+                    <p>O curso de Enfermagem proporciona aos alunos as habilidades necessárias para cuidar de pacientes e desempenhar funções importantes em hospitais e clínicas.</p>
+                </div>
+            </div>
+            <div class="course-item">
+                <h3>Odontologia</h3>
+                <button onclick="showCourseDetails('odontologia')">Saiba Mais</button>
+                <div class="course-description" id="odontologia-description">
+                    <p>Este curso forma profissionais aptos a realizar diagnósticos, tratamentos e prevenção de doenças bucais, além de atuar na estética dental.</p>
+                </div>
+            </div>
+            <div class="course-item">
+                <h3>Farmácia</h3>
+                <button onclick="showCourseDetails('farmacia')">Saiba Mais</button>
+                <div class="course-description" id="farmacia-description">
+                    <p>O curso de Farmácia capacita os alunos a trabalhar com medicamentos, exames laboratoriais e aconselhamento de pacientes sobre uso de remédios.</p>
+                </div>
+            </div>
         </div>
     </div>
+</section>
 
-    <section id="depoimentos">
-        <h2>O que nossos alunos dizem</h2>
-        <div class="depoimento">
-            <p>"A melhor experiência acadêmica que já tive! Professores qualificados e estrutura impecável." - João Silva</p>
+    
+    <!-- Contato -->
+    <section id="contato" class="section">
+        <div class="container">
+            <h2>Contato</h2>
+            <form id="contact-form">
+                <input type="text" id="nome" placeholder="Seu Nome" required>
+                <input type="email" id="email" placeholder="Seu Email" required>
+                <textarea id="mensagem" placeholder="Sua Mensagem" required></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
         </div>
-        <div class="depoimento">
-            <p>"O ensino inovador me preparou para o mercado de trabalho de maneira única!" - Maria Oliveira</p>
-        </div>
-        <button onclick="adicionarDepoimento()">Adicionar Depoimento</button>
     </section>
     
-    <section id="contato">
-        <h2>Contato</h2>
-        <form id="contact-form">
-            <input type="text" id="nome" placeholder="Seu Nome" required>
-            <input type="email" id="email" placeholder="Seu Email" required>
-            <textarea id="mensagem" placeholder="Sua Mensagem" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-        <p id="mensagem-enviada" style="display:none; color: green;">Mensagem enviada com sucesso!</p>
-    </section>
-
-    <script>
-        // Função para mostrar mais informações sobre o curso ao clicar
-        function mostrarInfo(curso) {
-            let titulo = '';
-            let descricao = '';
-
-            // Definir o título e descrição com base no curso escolhido
-            switch(curso) {
-                case 'medicina':
-                    titulo = 'Curso de Medicina';
-                    descricao = 'O curso de Medicina prepara os alunos para atuar como médicos com habilidades clínicas e científicas, proporcionando conhecimento aprofundado nas áreas de saúde e diagnóstico.';
-                    break;
-                case 'enfermagem':
-                    titulo = 'Curso de Enfermagem';
-                    descricao = 'O curso de Enfermagem oferece uma formação completa para atuar em hospitais, clínicas e outros ambientes de saúde, com foco no cuidado integral ao paciente.';
-                    break;
-                case 'farmacia':
-                    titulo = 'Curso de Farmácia';
-                    descricao = 'O curso de Farmácia prepara profissionais para atuar na indústria farmacêutica, em farmácias e drogarias, além de desenvolver habilidades na manipulação e controle de medicamentos.';
-                    break;
-                case 'fisioterapia':
-                    titulo = 'Curso de Fisioterapia';
-                    descricao = 'O curso de Fisioterapia forma profissionais para atuar no tratamento de problemas de movimento, lesões musculoesqueléticas e reabilitação física de pacientes.';
-                    break;
-                case 'nutricao':
-                    titulo = 'Curso de Nutrição';
-                    descricao = 'O curso de Nutrição ensina aos alunos como promover a saúde e o bem-estar por meio da alimentação, atuando na prevenção e no tratamento de doenças relacionadas à nutrição.';
-                    break;
-                default:
-                    titulo = 'Curso não encontrado';
-                    descricao = 'Selecione um curso para visualizar mais informações.';
-                    break;
-            }
-
-            // Exibir o modal com as informações do curso
-            document.getElementById('titulo-curso').innerText = titulo;
-            document.getElementById('descricao-curso').innerText = descricao;
-            document.getElementById('modal').style.display = 'block';
-        }
-
-        // Função para fechar o modal
-        function fecharModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        // Fechar o modal quando o usuário clicar fora da área de conteúdo
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('modal')) {
-                fecharModal();
-            }
-        }
-    </script>
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Afya Educacional. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>
